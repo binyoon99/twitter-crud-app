@@ -4,7 +4,7 @@ The Twitter CRUD Application is an app that allows users to search, post, and de
 
 ### Technologies Used:
 - Core Java
-- JDBC
+- Oauth and HttpClient
 - Maven
 - Twitter REST APIs
 - Postman

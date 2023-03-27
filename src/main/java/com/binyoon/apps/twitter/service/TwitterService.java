@@ -1,12 +1,18 @@
 package com.binyoon.apps.twitter.service;
 
+import com.binyoon.apps.twitter.dao.CrdDao;
 import com.binyoon.apps.twitter.model.Tweet;
 import java.util.List;
 import oauth.signpost.exception.OAuthCommunicationException;
 import oauth.signpost.exception.OAuthExpectationFailedException;
 import oauth.signpost.exception.OAuthMessageSignerException;
 
-public interface Service {
+public class TwitterService implements Service{
+  private CrdDao dao;
+
+  public TwitterService( CrdDao dao){
+    this.dao = dao;
+  }
 
   /**
    * Validate and post a user input Tweet
@@ -16,8 +22,18 @@ public interface Service {
    *
    * @throws IllegalArgumentException if text exceed max number of allowed characters or lat/long out of range
    */
-  Tweet postTweet(Tweet tweet)
-      throws OAuthMessageSignerException, OAuthExpectationFailedException, OAuthCommunicationException;
+  @Override
+  public Tweet postTweet(Tweet tweet)
+      throws OAuthMessageSignerException, OAuthExpectationFailedException, OAuthCommunicationException {
+    // Business logic : check text length , lat/lon range, id format
+    validatePostTweet(tweet);
+
+    // create tweet via dao
+    return (Tweet) dao.create(tweet);
+  }
+
+  private Tweet validatePostTweet(Tweet tweet) {
+  }
 
 
   /**
@@ -29,8 +45,10 @@ public interface Service {
    *
    * @throws IllegalArgumentException if id or fields param is invalid
    */
-  Tweet showTweet(String id, String[] fields);
-
+  @Override
+  public Tweet showTweet(String id, String[] fields) {
+    return null;
+  }
   /**
    * Delete Tweet(s) by id(s).
    *
@@ -39,6 +57,8 @@ public interface Service {
    *
    * @throws IllegalArgumentException if one of the IDs is invalid.
    */
-  List<Tweet> deleteTweets(String[] ids);
-
+  @Override
+  public List<Tweet> deleteTweets(String[] ids) {
+    return null;
+  }
 }

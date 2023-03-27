@@ -16,14 +16,14 @@ public class TweetUtil {
     Hashtag hashtag = new Hashtag();
     Entities entities = new Entities();
 
-
-    int hashtagIndex = text.indexOf("#");
-    int hashtagIndexEnd = text.indexOf(" ",hashtagIndex);
-    hashtag.setIndices(new int []{hashtagIndex, hashtagIndexEnd});
-    hashtag.setText(text.substring(hashtagIndex+1,hashtagIndexEnd));
-    List<Hashtag> list = new ArrayList<>();
-    list.add(hashtag);
-    entities.setHashtags(list);
+//
+//    int hashtagIndex = text.indexOf("#");
+//    int hashtagIndexEnd = text.indexOf(" ",hashtagIndex);
+//    hashtag.setIndices(new int []{hashtagIndex, hashtagIndexEnd});
+//    hashtag.setText(text.substring(hashtagIndex+1,hashtagIndexEnd));
+//    List<Hashtag> list = new ArrayList<>();
+//    list.add(hashtag);
+//    entities.setHashtags(list);
 
     // set instance of Coordinate
     float[] coordinateArray = {longitude, latitude};
